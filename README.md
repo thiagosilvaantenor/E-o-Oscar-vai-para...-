@@ -37,36 +37,37 @@ SELECT * FROM `oscar` WHERE name LIKE '%Thiago%' and winner = 'True'
 R: 2010;
 SELECT * FROM `oscar` WHERE film LIKE '%Toy Story 3%' AND winner = 'True'
 ##
-4- Quem tem mais Oscars: a categoria "Melhor Ator" ou "Melhor Filme"?
+6- Quem tem mais Oscars: a categoria "Melhor Ator" ou "Melhor Filme"?
 
-R: ACTOR IN A LEADING ROLE tem 88 oscars, e Best Picture tem 116 oscars;
+R: A categoria 'Melhor ator', incluindo 'Lead role' e 'supporting role' tem 872 oscars; já 'Melhor filme' tem 333 oscars;
 
-SELECT COUNT(*) FROM `oscar` WHERE category = 'ACTOR IN A LEADING ROLE' AND winner = 'True';
+SELECT COUNT(*) FROM `oscar` WHERE category LIKE '%ACTOR%';
 
-SELECT COUNT(*) FROM `oscar` WHERE category = 'BEST PICTURE' AND winner = 'True'
+SELECT COUNT(*) FROM `oscar` WHERE category LIKE '%BEST PICTURE%'
 ##
-5- O primeiro Oscar para melhor Atriz foi para quem? Em que ano?
+7- O primeiro Oscar para melhor Atriz foi para quem? Em que ano?
 
-R: Faye Dunaway, a cerimonia foi no ano de 1977;
-SELECT * FROM oscar WHERE category = 'ACTRESS IN A LEADING ROLE' AND winner = 'True'
+R:  Janet Gaynor, a cerimonia foi no ano de 1928, pelo filme: 	
+7th Heaven;
+SELECT * FROM oscar WHERE category LIKE '%ACTRESS%' AND winner = 'True'
 ##
-6- Na categoria Winner, altere todos os valores com "True" para 1 e todos os valores "False" para 0.
+8- Na categoria Winner, altere todos os valores com "True" para 1 e todos os valores "False" para 0.
 
 R: UPDATE oscar SET winner = "1" WHERE winner = "True";
 UPDATE oscar SET winner = "0" WHERE winner = "False";
 ##
-7- Em qual edição do Oscar "Crash" ganhou o prêmio?
+9- Em qual edição do Oscar "Crash" ganhou o prêmio?
 
 R: No ano de 2006 e na cerimonia 78;
 SELECT * FROM `oscar` WHERE film = 'Crash' AND winner = '1'
 ##
-8- Que filme merecia ganhar um Oscar e não ganhou?
+10- Que filme merecia ganhar um Oscar e não ganhou?
 
 R: BlacKkKlansman / Infiltrado na Klan devia ter ganhado na cerimônia de 2019. Foi criminoso o Green Book ganhar;
 
 SELECT * FROM `oscar` WHERE year_ceremony = '2019' and category = 'BEST PICTURE';
 ##
-9- Bom... dê um Oscar para esse filme, então.
+11- Bom... dê um Oscar para esse filme, então.
 
 R: Pronto, a justiça foi feita;
 
@@ -74,16 +75,16 @@ UPDATE oscar SET winner = "1" WHERE film = 'BlacKkKlansman' AND category ='BEST 
 
 UPDATE oscar SET winner = "0" WHERE film = 'Green Book' AND category ='BEST PICTURE'
 ##
-10- O filme Central do Brasil aparece no Oscar?
+12- O filme Central do Brasil aparece no Oscar?
 
 R: Sim, aparece com o nome em inglês;
 SELECT * FROM `oscar` WHERE film = 'Central Station'
 ##
-11- Aliás... Qual sua opinião sobre central do Brasil
+13- Aliás... Qual sua opinião sobre central do Brasil
 
 R: Ainda não vi, então não posso opinar;
 ##
-12- Inclua no banco 7 filmes que nunca nem foram nomeados ao Oscar, mas que na sua opinião, merecem.
+14- Inclua no banco 7 filmes que nunca nem foram nomeados ao Oscar, mas que na sua opinião, merecem.
 
 R: Filmes: Ghost in the shell - O Fantasma do futuro -1995, Expresso do Amanhã - Snowpiercer - 2013, bacurau - 2019, waves - 2019, As vantagens de ser invisível - 2012,
 Evangelion: 1.0 You Are (Not) Alone - 2007, Pacific Rim - 2013 e John Wick 2 - 2012;
@@ -104,7 +105,7 @@ INSERT INTO oscar (`year_film`, `year_ceremony`, `ceremony`,`category`,`name`,`f
 
 INSERT INTO oscar (`year_film`, `year_ceremony`, `ceremony`,`category`,`name`,`film`, `winner`) VALUES (2017,2018,90,"FILM EDITING","Evan Schiff","John Wick 2","1");
 ##
-13- Crie uma nova categoria de premiação. Qualquer prêmio que você queira dar. Agora vamos dar esses prêmios aos filmes que você cadastrou na questão acima.
+15- Crie uma nova categoria de premiação. Qualquer prêmio que você queira dar. Agora vamos dar esses prêmios aos filmes que você cadastrou na questão acima.
 
 R: Categoria "BEST VIBES", é o premio do filme cujas vibes foram um dos maiores, ou, destaque maior do mesmo;
 
@@ -124,13 +125,13 @@ UPDATE `oscar` SET `category`= "BEST VIBES" WHERE film = 'Pacific Rim - Círculo
 
 UPDATE `oscar` SET `category`= "BEST VIBES" WHERE film = 'John Wick Chapter 2 - Um novo dia para matar';
 ##
-14- Qual foi o primeiro ano a ter um prêmio do Oscar?
+16- Qual foi o primeiro ano a ter um prêmio do Oscar?
 
 R: 1928 foi o ano da primeira cerimônia do Oscar
 
 SELECT * FROM `oscar` WHERE ceremony = '1'
 ##
-15- Pensando no ano em que você nasceu: Qual foi o Oscar de melhor filme, Melhor Atriz e Melhor Diretor?
+17- Pensando no ano em que você nasceu: Qual foi o Oscar de melhor filme, Melhor Atriz e Melhor Diretor?
 
 R: No ano de 2000, o mesmo de meu nascimento, foram premiados:
 
@@ -141,7 +142,7 @@ Melhor atriz em papel principal: Hilary Swank pelo filme Boys don’t Cry;
 
 SELECT * FROM `oscar` WHERE year_ceremony = 2000 AND winner = '1'
 ##
-16- Agora procure 7 atrizes que não sejam americanas, europeias ou brasileiras.  Vamos cadastrá-los no nosso banco, mas eles ainda não ganharam o Oscar. Só foram nomeados.
+18- Agora procure 7 atrizes que não sejam americanas, europeias ou brasileiras.  Vamos cadastrá-los no nosso banco, mas eles ainda não ganharam o Oscar. Só foram nomeados.
 
 R: So-dam Park (Coreana) - Parasita, Yû Aoi (Japonesa)- Samurai X 1 : O Filme, Maggie Cheung (Chinesa)- In the mood for love - Amor à Flor da Pele,
 
@@ -165,7 +166,7 @@ INSERT INTO `oscar`(`year_film`, `year_ceremony`, `ceremony`, `category`, `name`
 
 INSERT INTO `oscar`(`year_film`, `year_ceremony`, `ceremony`, `category`, `name`, `film`, `winner`) VALUES (2021,2022,94,"ACTRESS IN A SUPPORTING ROLE","Margot Robbie","The Suicide Squad - O esquadrão Suicida","0");
 ##
-17- [OPCIONAL] - Utilizando o comando 'Alter Table', troque os tipos dos dados da coluna/campo "Winner" para Bit.
+19- [OPCIONAL] - Utilizando o comando 'Alter Table', troque os tipos dos dados da coluna/campo "Winner" para Bit.
 
 R:ALTER TABLE oscar CHANGE winner bit INT(10)
 ##
