@@ -1,7 +1,7 @@
 # E-o-Oscar-vai-para...-
-Atividade do banco de dados do Oscar, usando o MYSQL
-Hoje vamos trabalhar com o Oscar.
-A ideia de premiar ou ser premiado é para reconhecer:
+Atividade do banco de dados do Oscar, usando o MYSQL.
+
+Hoje vamos trabalhar com o Oscar. A ideia de premiar ou ser premiado é para reconhecer:
 - Reconhecer uma qualidade
 - Reconhecer um atributo
 - Reconhecer o esforço... 
